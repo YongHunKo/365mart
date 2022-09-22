@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.RequestMapper">
+	
+	<select id="select" parameterType="Integer" resultType="RequestDTO">
+		SELECT * FROM request WHERE rqid=#{rqid}
+	</select>
+	<select id="selectall" resultType="RequestDTO">
+		SELECT * FROM request
+	</select>
+	<insert id="insert" parameterType="RequestDTO">
+		INSERT INTO request VALUES (#{rqid}, #{custid}, #{pay}, #{orderprice}, #{orderdate})
+	</insert>
+	<update id="update" parameterType="RequestDTO">
+		UPDATE request SET custid=#{custid}, pay=#{pay}, orderprice=#{orderprice}, orderdate=#{orderdate} WHERE rqid=#{rqid}
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM request WHERE rqid=#{rqid}
+	</delete>
+	
+</mapper>
