@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.TransokMapper">
+	
+	<select id="select" parameterType="String" resultType="TransokDTO">
+		SELECT * FROM trans WHERE tran=#{tran}
+	</select>
+	<select id="selectall" resultType="TransokDTO">
+	</select>
+	<insert id="insert" parameterType="TransokDTO">
+	</insert>
+	<update id="update" parameterType="TransokDTO">
+	</update>
+	<delete id="delete" parameterType="String">
+	</delete>
+	<select id="transok" parameterType="String" resultType="TransokDTO">
+		SELECT rd.rdno, cu.custid AS cust_id,
+		cu.cname AS cust_name, cu.caddr AS cust_addr,
+		it.name AS item_name, rd.cnt AS item_cnt, (it.price * rd.cnt) AS total_price,
+		st.stor AS stor_cnt, tr.tran AS trans_ok, tr.ttime AS tran_time
+		FROM trans tr
+		INNER JOIN request re ON tr.orderid = re.rqid
+		INNER JOIN customer cu ON re.custid = cu.custid
+		INNER JOIN requestdetail rd ON rd.rqid = re.rqid
+		INNER JOIN item it ON rd.itemid = it.itemid
+		INNER JOIN stor st ON it.itemid = st.itemid
+		WHERE tr.tran = #{tran}
+	</select>
+	
+</mapper>
