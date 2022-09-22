@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class FindrdDTO {
 	private String rdno;
-	private int rdcnt;
+	private int cnt;
 	//rd내부의 변수
 	private String custid;
 	private String cname;

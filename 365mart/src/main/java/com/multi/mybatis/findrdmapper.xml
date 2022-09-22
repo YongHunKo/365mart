@@ -12,16 +12,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN item it ON rd.itemid = it.itemid
 	</select>
 	<insert id="insert" parameterType="FindrdDTO">
-		INSERT INTO requestDetail VALUES (#{rdno}, #{rqid}, #{itemid}, #{total}, #{coupon}, #{rdcnt})
+		INSERT INTO requestDetail VALUES (#{rdno}, #{rqid}, #{itemid}, #{total}, #{coupon}, #{cnt})
 	</insert>
 	<update id="update" parameterType="FindrdDTO">
-		UPDATE requestDetail SET rqid=#{rqid}, itemid=#{itemid}, total=#{total}, coupon=#{coupon}, rdcnt=#{rdcnt} WHERE rdno=#{rdno}
+		UPDATE requestDetail SET rqid=#{rqid}, itemid=#{itemid}, total=#{total}, coupon=#{coupon}, cnt=#{cnt} WHERE rdno=#{rdno}
 	</update>
 	<delete id="delete" parameterType="String">
 		DELETE FROM requestDetail WHERE rdno=#{rdno}
 	</delete>
 	<select id="findrd" parameterType="String" resultType="FindrdDTO">
-		SELECT rd.rdno, cu.custid, cu.cname, it.name, it.price, rd.rdcnt    
+		SELECT rd.rdno, cu.custid, cu.cname, it.name, it.price, rd.cnt    
 		FROM requestdetail rd
 		INNER JOIN item it ON rd.itemid = it.itemid
 		INNER JOIN cart ca ON it.itemid = ca.itemid
