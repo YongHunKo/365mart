@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.TransMapper">
+	
+	<select id="select" parameterType="Integer" resultType="TransDTO">
+		SELECT * FROM trans WHERE transid=#{transid}
+	</select>
+	<select id="selectall" resultType="TransDTO">
+		SELECT * FROM trans
+	</select>
+	<insert id="insert" parameterType="TransDTO">
+		INSERT INTO trans VALUES (#{transid}, #{orderid}, #{tran}, #{ttime})
+	</insert>
+	<update id="update" parameterType="TransDTO">
+		UPDATE trans SET orderid=#{orderid}, tran=#{tran}, ttime=#{ttime} WHERE transid=#{transid}
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM trans WHERE transid=#{transid}
+	</delete>
+	
+</mapper>

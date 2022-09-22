@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.RefundMapper">
+	
+	<select id="select" parameterType="Integer" resultType="RefundDTO">
+		SELECT * FROM refund WHERE rfid=#{rfid}
+	</select>
+	<select id="selectall" resultType="RefundDTO">
+		SELECT * FROM refund
+	</select>
+	<insert id="insert" parameterType="RefundDTO">
+		INSERT INTO refund VALUES (#{rfid}, #{rfno}, #{reason})
+	</insert>
+	<update id="update" parameterType="RefundDTO">
+		UPDATE refund SET rfno=#{rfno}, reason=#{reason} WHERE rfid=#{rfid}
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM refund WHERE rfid=#{rfid}
+	</delete>
+	
+</mapper>

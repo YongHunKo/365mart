@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.StorMapper">
+	
+	<select id="select" parameterType="Integer" resultType="StorDTO">
+		SELECT * FROM stor WHERE storid=#{storid}
+	</select>
+	<select id="selectall" resultType="StorDTO">
+		SELECT * FROM stor
+	</select>
+	<insert id="insert" parameterType="StorDTO">
+		INSERT INTO stor VALUES (#{storid}, #{itemid}, #{stor}, #{loc})
+	</insert>
+	<update id="update" parameterType="StorDTO">
+		UPDATE stor SET itemid=#{itemid}, stor=#{stor}, loc=#{loc} WHERE storid=#{storid}
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM stor WHERE storid=#{storid}
+	</delete>
+	
+</mapper>
