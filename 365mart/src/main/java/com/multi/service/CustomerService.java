@@ -43,7 +43,7 @@ public class CustomerService implements MyService<String, CustomerDTO>{
 	@Override
 	public List<CustomerDTO> getall() throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.select();
+		return mapper.selectall();
 	}
 
 }

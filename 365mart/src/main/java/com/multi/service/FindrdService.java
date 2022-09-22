@@ -43,7 +43,7 @@ public class FindrdService implements MyService<String, FindrdDTO>{
 	@Override
 	public List<FindrdDTO> getall() throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.select();
+		return mapper.selectall();
 	}
 	
 	public List<FindrdDTO> findrd(String rdno) throws Exception{

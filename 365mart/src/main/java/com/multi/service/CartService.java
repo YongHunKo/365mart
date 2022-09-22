@@ -43,7 +43,7 @@ public class CartService implements MyService<Integer, CartDTO>{
 	@Override
 	public List<CartDTO> getall() throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.select();
+		return mapper.selectall();
 	}
 
 }
