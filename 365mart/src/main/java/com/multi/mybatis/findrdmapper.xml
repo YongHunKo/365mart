@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.FindrdMapper">
+	
+	<select id="select" parameterType="String" resultType="FindrdDTO">
+		SELECT * FROM requestDetail WHERE rdno=#{rdno}
+	</select>
+	<select id="selectall" resultType="FindrdDTO">
+		SELECT * FROM requestdetail rd
+		INNER JOIN item it ON rd.itemid = it.itemid
+	</select>
+	<insert id="insert" parameterType="FindrdDTO">
+		INSERT INTO requestDetail VALUES (#{rdno}, #{rqid}, #{itemid}, #{total}, #{coupon}, #{rdcnt})
+	</insert>
+	<update id="update" parameterType="FindrdDTO">
+		UPDATE requestDetail SET rqid=#{rqid}, itemid=#{itemid}, total=#{total}, coupon=#{coupon}, rdcnt=#{rdcnt} WHERE rdno=#{rdno}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM requestDetail WHERE rdno=#{rdno}
+	</delete>
+	<select id="findrd" parameterType="String" resultType="FindrdDTO">
+		SELECT rd.rdno, cu.custid, cu.cname, it.name, it.price, rd.rdcnt    
+		FROM requestdetail rd
+		INNER JOIN item it ON rd.itemid = it.itemid
+		INNER JOIN cart ca ON it.itemid = ca.itemid
+		INNER JOIN customer cu ON ca.custid = cu.custid
+		WHERE rd.rdno = #{rdno}
+	</select>
+	
+</mapper>
