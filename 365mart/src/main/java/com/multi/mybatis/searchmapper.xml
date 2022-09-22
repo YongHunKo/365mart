@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.SearchMapper">
+	
+	<select id="select" parameterType="String" resultType="SearchDTO">
+	</select>
+	<select id="selectall" resultType="SearchDTO">
+	</select>
+	<insert id="insert" parameterType="SearchDTO"></insert>
+	<update id="update" parameterType="SearchDTO">
+	</update>
+	<delete id="delete" parameterType="String">
+	</delete>
+	<select id="searchdb" parameterType="String" resultType="SearchDTO">
+		SELECT cu.cname, cu.gender, it.cateid, it.name FROM customer cu
+		INNER JOIN cart ca ON cu.custid = ca.custid
+		INNER JOIN item it ON ca.itemid = it.itemid
+		WHERE cu.gender Like #{gender}
+		AND it.cateid IN(10, 11, 12)
+	</select>
+	
+</mapper>
