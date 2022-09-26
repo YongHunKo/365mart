@@ -16,7 +16,7 @@ class SelectCate {
 	void contextLoads() {
 		CateDTO cate = null;
 		try {
-			cate = service.get(11);
+			cate = service.get(12);
 			System.out.println(cate);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
